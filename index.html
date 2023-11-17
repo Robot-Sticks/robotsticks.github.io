@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RobotSticks</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+  <link rel="manifest" href="image/site.webmanifest">  
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+    /* CSS para o footer fixo no rodapé */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .container {
+      flex: 1;
+    }
+    footer {
+      background-color: #f8f9fa; /* Cor de fundo do footer */
+      padding: 20px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<div style="position: fixed; left: -50px; bottom: 10px; background-color: #f44336; color: white; padding: 5px 60px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
+  Beta <br>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="/">RobotSticks</a>
+  <div id="LoginScreen">
+    <button id="login">Login</button>
+  </div>
+  <div id="dashboard">
+
+    <button id="logout">Logout</button>
+  </div>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4" id="welcome-message">
+        <br>Welcome to RobotSticks!
+      </h1>
+      <p class="lead" id="platform-description">
+        Try our platform for building Robots with Popsicle sticks.
+      </p>
+      <a class="btn btn-primary btn-lg" href="#" role="button" id="start-building-button">Start Building</a>
+    </div>
+  </div>
+  <select id="language-selector" class="form-control" style="width: 200px;">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="pt">Português</option>
+    <option value="de">Deutsch</option>
+    <option value="es">Español</option>
+  </select>
+  <footer class="bg-light py-3">
+    <div class="container">
+      <p class="text-muted text-center" id="copyright-message">&copy; RobotSticks 2023</p>
+    </div>
+  </footer>
+
+  <script>
+    // Função para definir o idioma
+    function setLanguage(language) {
+      const translations = {
+        en: {
+          welcomeMessage: "Welcome to Palitos.XYZ!",
+          platformDescription: "Try our platform for building educational projects with Popsicle stick 3D models to inspire children around the world to make projects with real wooden sticks.",
+          startBuildingButton: "Start Building",
+          copyrightMessage: "&copy; LCE.toys 2023",
+        },
+        fr: {
+          welcomeMessage: "Bienvenue sur Palitos.XYZ !",
+          platformDescription: "Essayez notre plateforme pour construire des projets éducatifs avec des modèles 3D en bâtonnets de glace pour inspirer les enfants du monde entier à réaliser des projets avec de vrais bâtonnets en bois.",
+          startBuildingButton: "Commencer la construction",
+          copyrightMessage: "&copy; LCE.toys 2023",
+        },
+        pt: {
+          welcomeMessage: "Bem-vindo ao Palitos.XYZ!",
+          platformDescription: "Experimente nossa plataforma para construir projetos educacionais com modelos 3D de palitos de picolé para inspirar crianças ao redor do mundo a fazer projetos com palitos de madeira reais.",
+          startBuildingButton: "Começar a construir",
+          copyrightMessage: "&copy; LCE.toys 2023",
+        },
+        de: {
+          welcomeMessage: "Willkommen bei Palitos.XYZ!",
+          platformDescription: "Probieren Sie unsere Plattform zum Bau von Bildungsprojekten mit 3D-Modellen aus Eis am Stiel, um Kinder auf der ganzen Welt zu inspirieren, Projekte mit echten Holzstäben zu gestalten.",
+          startBuildingButton: "Starten Sie den Bau",
+          copyrightMessage: "&copy; LCE.toys 2023",
+        },
+        es: {
+          welcomeMessage: "¡Bienvenido a Palitos.XYZ!",
+          platformDescription: "Pruebe nuestra plataforma para construir proyectos educativos con modelos 3D de palitos de helado para inspirar a los niños de todo el mundo a hacer proyectos con palitos de madera reales.",
+          startBuildingButton: "Comenzar a construir",
+          copyrightMessage: "&copy; LCE.toys 2023",
+        },
+      };
+      document.getElementById("welcome-message").textContent = translations[language].welcomeMessage;
+      document.getElementById("platform-description").textContent = translations[language].platformDescription;
+      document.getElementById("start-building-button").textContent = translations[language].startBuildingButton;
+      document.getElementById("copyright-message").innerHTML = translations[language].copyrightMessage;
+    }
+    // Adicione um ouvinte de evento para detectar alterações na seleção do idioma
+    document.getElementById("language-selector").addEventListener("change", function () {
+      const selectedLanguage = this.value;
+      setLanguage(selectedLanguage);
+    });
+  </script>
+    <script>
+      const characters = '1234567890';
+      const code = Array.from({ length: 20 }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
+      const NewProjectCode = new Date().toISOString().slice(0, 10).replace(/-/g, '') + code;
+      const startBuildingLink = document.querySelector('.btn-primary');
+      startBuildingLink.href = `3d?p=${NewProjectCode}`;
+    </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCt0IhN37bwI1Gp4xPBmhq8FY9bgrfrydM",
+      authDomain: "stickeducation-27116.firebaseapp.com",
+      databaseURL: "https://stickeducation-27116-default-rtdb.firebaseio.com",
+      projectId: "stickeducation-27116",
+      storageBucket: "stickeducation-27116.appspot.com",
+      messagingSenderId: "566576954504",
+      appId: "1:566576954504:web:fa4f51202373ba6c30733d"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('dashboard').style.display = "none"
+
+    document.getElementById('login').addEventListener('click', GoogleLogin)
+    document.getElementById('logout').addEventListener('click', LogoutUser)
+
+    let provider = new firebase.auth.GoogleAuthProvider()
+
+    function GoogleLogin() {
+  console.log('Login Btn Call')
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(function() {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      return firebase.auth().signInWithPopup(provider);
+    })
+    .then(res => {
+      console.log(res.user)
+      document.getElementById('LoginScreen').style.display = "none"
+      document.getElementById('dashboard').style.display = "block"
+      showUserDetails(res.user)
+    })
+    .catch(e => {
+      console.log(e)
+    })
+}
+
+    function showUserDetails(user) {
+      document.getElementById('userDetails').innerHTML = `
+
+        `
+    }
+/*
+  Add in body: <div id="userDetails"></div>
+    
+  function showUserDetails(user) {
+      document.getElementById('userDetails').innerHTML = `
+          <img src="${user.photoURL}" style="width:10%">
+          <p>Name: ${user.displayName}</p>
+          <p>Email: ${user.email}</p>
+        `
+    }
+*/
+    function checkAuthState() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          document.getElementById('LoginScreen').style.display = "none"
+          document.getElementById('dashboard').style.display = "block"
+          showUserDetails(user)
+        } else {
+
+        }
+      })
+    }
+
+    function LogoutUser() {
+      console.log('Logout Btn Call')
+      firebase.auth().signOut().then(() => {
+        document.getElementById('LoginScreen').style.display = "block"
+        document.getElementById('dashboard').style.display = "none"
+      }).catch(e => {
+        console.log(e)
+      })
+    }
+    checkAuthState()
+  </script>
+</body>
+
+</html>
