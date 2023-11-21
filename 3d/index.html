@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../image/favicon-32x32.png" sizes="32x32">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-  <meta name="description" content="RobotSticks - Create, Share and Explore Projects in Sorvete Sticks">
+  <meta name="description" content="RobotSticks - Create, Share and Explore Projects in Popsicle Sticks">
   <style>
     body { 
       margin: 0; 
@@ -399,8 +399,8 @@ usersRef.child(userId).transaction(projetos => {
 }
 
 // Adding a new stick
-const cubeGeometry = new THREE.BoxGeometry(1, 1, 1); 
-const cubeMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+const RobotGeometry = new THREE.BoxGeometry(1, 1, 1); 
+const RobotMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
 
 function addRobot() {
   const currentUser = firebase.auth().currentUser;
@@ -448,10 +448,10 @@ usersRef.child(userId).transaction(projetos => {
     idStick: novoPalitoId,
     idUser: currentUser.uid
   }); */
-  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  const cube = new THREE.Mesh(RobotGeometry, RobotMaterial);
   cube.position.set(0, 1, 0);
   scene.add(cube);
-  
+
   console.log("Add Robot!");
 }
 //saveRotacao function that updates the database:
