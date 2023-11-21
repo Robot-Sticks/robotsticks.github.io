@@ -450,9 +450,9 @@ usersRef.child(userId).transaction(projetos => {
     idStick: novoPalitoId,
     idUser: currentUser.uid
   }); */
-  const cube = new THREE.Mesh(RobotGeometry, RobotMaterial);
-  cube.position.set(0, 1, 0);
-  scene.add(cube);
+  const RoboT = new THREE.Mesh(RobotGeometry, RobotMaterial);
+  RoboT.position.set(0, 1, 0);
+  scene.add(RoboT);
 
   console.log("Add Robot!");
 }
