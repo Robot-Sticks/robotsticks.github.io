@@ -344,7 +344,7 @@ const usersRef = firebase.database().ref('users');
 
 
 // Adding a new stick
-function adicionarPalito() {
+function addSticks() {
   const currentUser = firebase.auth().currentUser;
   if (!currentUser) {
     alert("You need to be logged in to add a stick!"); //Alert for Login if not logged in
@@ -471,7 +471,7 @@ usersRef.child(userId).transaction(projetos => {
     // Add functionality to the new buttons
       //Add Stick for Add
       
-    document.getElementById("addStickButton").addEventListener("click", adicionarPalito);
+    document.getElementById("addStickButton").addEventListener("click", addSticks);
 
     document.getElementById("girar-esquerda").addEventListener("click", () => girarPalitoSelecionado(-1));
     document.getElementById("girar-direita").addEventListener("click", () => girarPalitoSelecionado(1));
