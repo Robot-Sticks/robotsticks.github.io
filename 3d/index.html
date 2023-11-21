@@ -51,7 +51,12 @@
     order: 1; 
     
   }
-
+  #addRobotButton {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); 
+}
   </style>  
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.124/build/three.js"></script>
@@ -178,6 +183,7 @@ window.addEventListener('resize', ajustSizeButtonAdd);
     </div>
   </footer>
   <div><button   class="button" id="addStickButton" style="display: inline-block;">Add Stick</button></div>		
+  <div><button   class="button" id="addRobotButton" style="display: inline-block;">Add Robot</button></div>		
 
 <div id="button-container" hidden style="display: block;">
     <button  class="button" id="girar-esquerda" style="display: inline-block;">Turn Left</button>
@@ -391,6 +397,63 @@ usersRef.child(userId).transaction(projetos => {
   });
   console.log("Add Stick!");
 }
+
+// Adding a new stick
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1); 
+const cubeMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+
+function addRobot() {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    alert("You need to be logged in to add a Robot!"); //Alert for Login if not logged in
+    //window.location.href = "index.html";
+
+  GoogleLogin();
+  return;
+}
+/*
+  const cubo = new THREE.Mesh(geometry, material);
+  cubo.position.set(0, 0.05, 0);
+  const novoPalitoRef = dbRef.push();
+  const novoPalitoId = novoPalitoRef.key;
+  cubo.userData.id = novoPalitoId; // ID  userData
+  objetosArrastaveis.push(cubo);
+  scene.add(cubo);
+
+// entry for this user in the users table, with the project ID
+const userId = currentUser.uid;
+
+
+usersRef.child(userId).transaction(projetos => {
+  if (projetos) {
+    projetos.push(code);
+  } else {
+    projetos = [code]; 
+  }
+  
+  return projetos;
+})
+  // Add new Stick
+  novoPalitoRef.set({
+    posicao: {
+      x: cubo.position.x,
+      y: cubo.position.y,
+      z: cubo.position.z
+    },
+    rotacao: {
+      x: cubo.rotation.x,
+      y: cubo.rotation.y,
+      z: cubo.rotation.z
+    },
+    idStick: novoPalitoId,
+    idUser: currentUser.uid
+  }); */
+  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  cube.position.set(0, 1, 0);
+  scene.add(cube);
+  
+  console.log("Add Robot!");
+}
 //saveRotacao function that updates the database:
       function salvarRotacao() {
 
@@ -472,6 +535,8 @@ usersRef.child(userId).transaction(projetos => {
       //Add Stick for Add
       
     document.getElementById("addStickButton").addEventListener("click", addSticks);
+    document.getElementById("addRobotButton").addEventListener("click", addRobot);
+
 
     document.getElementById("girar-esquerda").addEventListener("click", () => girarPalitoSelecionado(-1));
     document.getElementById("girar-direita").addEventListener("click", () => girarPalitoSelecionado(1));
