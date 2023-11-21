@@ -29,4 +29,3 @@ const stick3D =		{
         }
     }
 };
-module.exports = stick3D;

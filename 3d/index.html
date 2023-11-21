@@ -229,9 +229,9 @@ window.addEventListener('resize', ajustSizeButtonAdd);
     }
 
     function showUserDetails(user) {
-      document.getElementById('userDetails').innerHTML = `
+      /*document.getElementById('userDetails').innerHTML = `
 
-        `
+        `*/
     }
 
 function checkAuthState() {
@@ -398,9 +398,11 @@ usersRef.child(userId).transaction(projetos => {
   console.log("Add Stick!");
 }
 
-// Adding a new stick
+// Adding a new Robot
 const RobotGeometry = new THREE.BoxGeometry(1, 1, 1); 
 const RobotMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+
+let robotCube;
 
 function addRobot() {
   const currentUser = firebase.auth().currentUser;
@@ -602,6 +604,7 @@ function cliqueNoPalito(event) {
     //palitoClicado.material.color.copy(newColor);
   }
 }
+
 
 
   
