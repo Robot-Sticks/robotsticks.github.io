@@ -1,0 +1,177 @@
+body {
+	background-color: #1e1e1e;
+	color: #fff; 
+  }
+.editor {
+	border: 0px;
+	margin-top:0px;
+	margin-bottom: 0px;
+	padding:0;
+	 
+}
+   
+.code {
+   border: 1px solid #444;
+   padding: 0px;	
+   border-radius: 5px;
+   overflow: hidden;
+   background-color: #333;
+}
+
+.result {
+   display: none;
+   padding: 5px 5px 0px 5px;
+   margin: 0px;
+   background-color: #444;
+   border-top: 1px solid #666;
+}
+
+.resultheader {
+   border-top: 1px solid #666;
+   padding: 0;
+   maring: 0;
+   background-color: #555;
+}
+
+
+.code-navbar-right {
+   float: right;
+   line-height: 35px;
+   padding-right: 5px;
+}
+
+
+.code-nav-status {
+   color: #bbb;	
+   font-size: 0.7em;
+   text-align: right;
+   
+}
+
+
+.resultHTML {
+   width: 100%;
+   border: 0;
+}
+
+
+.resultText > pre {
+   border: 0;
+   background-color: #333;
+   padding: 0;
+   padding: 5px 10px;
+   font-family: monospace;
+   max-height: 500px;
+   overflow: auto;
+   color: #fff;
+}
+
+
+.hide-before-execution {
+   display: none;
+}
+
+.result-get-parameters {
+   display: none;
+   background-color: #555;
+   padding: 5px;
+   border-top: 1px solid #666;
+   
+}
+
+.result-get-parameters > input {
+   margin: 0 !important;
+   width: 50%;
+   background-color: #444;
+   color: #fff;
+   border: 1px solid #666;
+}
+
+.result-post-parameters {
+   display: none;
+   background-color: #555;
+   padding: 5px;
+   border-top: 1px solid #666;
+
+}
+
+.code-navbar {
+   overflow: visible;
+   min-height: 35px;
+   padding: 0;
+   background-color: #444;
+}
+
+.code-nav {
+   margin: 0;
+   list-style: outside none none;
+}
+
+.code-navbar .code-nav {
+   position: relative;
+   left: 0px;
+   display: block;
+   float: left;
+   margin: 0;
+   padding: 0;	
+
+}
+
+.code-navbar .code-nav > li {
+   float: left;
+   border-right: 1px solid #666;
+}
+
+.code-navbar-right .code-nav > li {
+   float: left;
+   border-left: 1px solid #666;
+   border-right: 0px;
+}
+
+.code-nav > li > a {
+   display: block;
+   color: #fff;
+}
+
+.code-navbar .code-nav > li > a {
+   float: none;
+   padding: 0px 15px;
+   line-height: 35px;
+
+}
+
+.code-navbar .code-nav > li > a:hover {
+   background-color: #555;
+}
+
+button.close {
+   padding: 0;
+   cursor: pointer;
+   background: transparent;
+   border: 0;
+   -webkit-appearance: none;
+}
+.close {
+   float: right;
+   font-size: 20px;
+   font-weight: bold;
+   line-height: 20px;
+   color: #fff;
+   text-shadow: 0 1px 0 #000;
+   opacity: .2;
+   filter: alpha(opacity=20);
+}
+.close:hover,.close:focus {
+   color:#fff;
+   text-decoration:none;
+   cursor:pointer;
+   opacity:.4;
+   filter:alpha(opacity=40)
+}
+.resultHTML {
+   color: #fff; 
+ }
+ 
+ .resultHTML body {
+   background-color: #333;
+ }

@@ -3,15 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>RobotSticks</title>
+	<link rel="stylesheet" id="font-awesome"  href="libs/font-awesome.min.css" type="text/css" media="all" />
 
   <link rel="icon" type="image/png" href="../image/favicon-32x32.png" sizes="32x32">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet"  href="css/compile-progstick.css" type="text/css" media="all" />
 
   <meta name="description" content="RobotSticks - Create, Share and Explore Projects in Popsicle Sticks">
   <style>
     body { 
-      margin: 0; 
+      margin: 0;
+    	font-family: Arial;   
     }
+    a {
+      text-decoration: none;
+      color: #20477a;
+    }
+    .ace_editor {
+      font-size: 14px !important;
+    }
+    
     #button-container {
       position: absolute;
       bottom: 80px;
@@ -56,7 +67,21 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%); 
+  }
+  #CodeRobotButton {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%); 
+  }
+  .code {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; 
 }
+
   </style>  
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.124/build/three.js"></script>
@@ -71,12 +96,35 @@
 </head>
 
 <body>
+  <div hidden  class="code" id="code_1" data-ace-editor-id="1"
+	data-ace-editor-allow-execution="true" data-ace-editor-hide-vars="false" 
+	data-ace-editor-script-name="code.progs" data-ace-editor-default-get="" data-ace-editor-default-post="">
+<pre class="editor" id="code_editor_1" >
+	#define LED_PIN PC3
+
+	void setup() {
+	
+	  pinMode(LED_PIN, OUTPUT);
+	
+	}
+	
+	void loop() {
+	  digitalWrite(LED_PIN, LOW);
+	
+	  delay(1000);
+	  digitalWrite(LED_PIN, HIGH);
+	  delay(1000);
+	
+	}</pre></div>
+
   <div style="position: fixed; left: -80px; bottom: 20px; background-color: #f44336; color: white; padding: 5px 80px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
   Beta 0.13t<br>
   </div>
 
 
   <script>
+
+
 function ajustSizeButtonAdd() {
   const button = document.getElementById('addStickButton');
 
@@ -184,6 +232,8 @@ window.addEventListener('resize', ajustSizeButtonAdd);
   </footer>
   <div><button   class="button" id="addStickButton" style="display: inline-block;">Add Stick</button></div>		
   <div><button   class="button" id="addRobotButton" style="display: inline-block;">Add Robot</button></div>		
+  <div><button   class="button" id="CodeRobotButton" style="display: inline-block;">Code Robot</button></div>		
+
 
 <div id="button-container" hidden style="display: block;">
     <button  class="button" id="girar-esquerda" style="display: inline-block;">Turn Left</button>
@@ -456,6 +506,19 @@ usersRef.child(userId).transaction(projetos => {
 
   console.log("Add Robot!");
 }
+function CodeShow() {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    alert("You need to be logged in to add a Robot!"); //Alert for Login if not logged in
+    //window.location.href = "index.html";
+
+  GoogleLogin();
+  return;
+}
+const codeDiv = document.querySelector(".code");
+  codeDiv.removeAttribute("hidden");
+  console.log("Code Show!");
+}
 //saveRotacao function that updates the database:
       function salvarRotacao() {
 
@@ -538,6 +601,7 @@ usersRef.child(userId).transaction(projetos => {
       
     document.getElementById("addStickButton").addEventListener("click", addSticks);
     document.getElementById("addRobotButton").addEventListener("click", addRobot);
+    document.getElementById("CodeRobotButton").addEventListener("click", CodeShow);
 
 
     document.getElementById("girar-esquerda").addEventListener("click", () => girarPalitoSelecionado(-1));
@@ -666,6 +730,20 @@ function cliqueNoPalito(event) {
     animate();
 
   </script>
+
+<script type='text/javascript' src='libs/ace/ace.js'></script>
+<script type='text/javascript' src='libs/FileSaver.js'></script>
+<script type='text/javascript' src='js/compile-progstick.js'></script>
+
+  <script>
+    jQuery('div[data-ace-editor-id]').each(function() {
+      var url='http://compile.progstick.com/compile/compile3/execute.php'; 
+      var language = 'en'; //Choose 'de' for German
+      new OnlineCompilerProgstick(this, language, url);
+    });
+
+  </script>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
