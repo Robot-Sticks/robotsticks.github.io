@@ -1,7 +1,7 @@
 
 function OnlineCompilerProgstick(element, language='en', url='http://compile.progstick.com/compile/') {
 	var lang = {
-			'execute': 'Compile',
+			'execute': 'Play',
 			'execute_code': 'Compile code',
 			'switch views': 'Switch views',
 			'download script': 'Download BIN',
@@ -15,7 +15,7 @@ function OnlineCompilerProgstick(element, language='en', url='http://compile.pro
 	}
 	
 	var lang_de = {
-			'execute': 'Kompilieren',
+			'execute': 'Spielen',
 			'execute_code': 'Code Kompilieren',
 			'switch views': 'Anzeige umschalten',
 			'download script': 'Laden Sie BIN herunter',
@@ -112,12 +112,12 @@ function OnlineCompilerProgstick(element, language='en', url='http://compile.pro
 					'		<ul class="code-nav">'+
 					'			<li class="hide-before-execution"><a href="#" onclick="OnlineCompilerProgstick.switchView(\''+id+'\'); return false;" title="'+lang['switch views']+'"><i  id="code_code-sym_'+id+'" class="fa fa-file-text-o"></i></a></li>'+ 
 					'			<li><a href="#" onclick="OnlineCompilerProgstick.downloadScript(\''+id+'\', \''+scriptName+'\'); return false;" title="'+lang['download script']+'"><i class="fa fa-download"></i></a></li>'+ 
-					'			<li><a href="http://compile.progstick.com" target="_blank" title="'+lang['help']+'"><i class="fa fa-question-circle"></i></a></li>'+		 		
+					'			<li><a href="#" target="_blank" title="Closed"><i class="fa fa-times"></i></a></li>'+		 		
 					'		</ul>'+
 					' 	</div>'+
 					'	<div class="code-navbar">'+
 					'		<ul class="code-nav">'+
-					'			<li><a href="#" id="compileButton" onclick="OnlineCompilerProgstick.submitCode(\''+id+'\'); return false;" title="'+lang['execute_code']+'"><i id="code_gear-sym_'+id+'" class="fa fa-cog"></i> '+lang['execute']+' <span class="hide-before-execution">(F9)</span></a></li>'+
+					'			<li><a href="#" id="compileButton" onclick="OnlineCompilerProgstick.submitCode(\''+id+'\'); return false;" title="'+lang['execute_code']+'"><i id="code_gear-sym_'+id+'" class="fa fa-play"></i> '+lang['execute']+' <span class="hide-before-execution">(F9)</span></a></li>'+
 					((hideVars) ? '' : '<li><a href="#" title="'+lang['define GET/POST variables']+'" onclick="OnlineCompilerProgstick.cyclePostGetVars(\''+id+'\'); return false;">$</a></li>')+
 					'		</ul>'+
 					'	</div>'+		 	
