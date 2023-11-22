@@ -158,10 +158,10 @@ if (window.innerWidth > window.innerHeight) {
 // Horizontal screen  buttonLogout.style.width = '100%';
   buttonLogout.style.height = '10';
 } else {
-  // Tela screen
+  // Screen
   buttonLogout.style.width = '300%';
   buttonLogout.style.height = '20';
-  buttonLogout.style.fontSize = '180%'; // Aumentar o tamanho da letra para 20 pixels
+  buttonLogout.style.fontSize = '180%'; // Increase the font size to 20 pixels
 
 }
 const navbarbrand = document.getElementById('navbar-brand');
@@ -352,7 +352,7 @@ geometry.scale(0.04, 0.04, 0.04);
 
 // Ambient light
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Cor e intensidade da luz ambiente
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Color and intensity of ambient light
 scene.add(ambientLight);
 
 const textureLoader = new THREE.TextureLoader();
@@ -576,7 +576,7 @@ const codeDiv = document.querySelector(".code");
     // Function to rotate the selected stick
     function rotatestickSelected(direcao) {
       if (stickSelected) {
-        stickSelected.rotation.y += THREE.MathUtils.degToRad(5 * direcao); // Gira o palito selecionado em 5 graus na direção atual
+        stickSelected.rotation.y += THREE.MathUtils.degToRad(5 * direcao); // Rotate the selected stick by 5 degrees in the current direction
         salvarRotacao();
       }
     }
@@ -616,7 +616,7 @@ function deselectStick() {
 
   if (stickSelected) {
 //stickSelected.material.color.set(0x00ff00); // Redefine a cor para a original
-    stickSelected = null; // Limpa a referência para o palito selecionado
+    stickSelected = null; // Rotate the selected stick by 5 degrees in the current direction
 
   }
 }
@@ -674,7 +674,7 @@ function clickOntheStick(event) {
 
   
 
-    renderer.domElement.addEventListener("click", clickOntheStick, false); // Cliques
+    renderer.domElement.addEventListener("click", clickOntheStick, false); // Clicks
   
     // Render
     function render() {
