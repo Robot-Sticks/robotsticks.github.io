@@ -122,6 +122,9 @@
   Beta 0.13t<br>
   </div>
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>  
 
   <script>
 
@@ -181,7 +184,7 @@ if (window.innerWidth > window.innerHeight) {
 window.addEventListener('load', ajustSizeButtonAdd);
 window.addEventListener('resize', ajustSizeButtonAdd);    
   </script>
-  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
 	<script>
         // Get the query string from the URL
         const queryString = window.location.search;
@@ -242,75 +245,12 @@ window.addEventListener('resize', ajustSizeButtonAdd);
     <button  class="button" id="girar-frente" style="display: inline-block;">Turn Forward</button>
     <button  class="button" id="girar-atras" style="display: inline-block;">Turn Back</button>
 </div>
-  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+  <script src="./js/firebase-config.js"></script>
+
   <script>
-    // Configuration Firebase
-	var firebaseConfig = {
-    apiKey: "AIzaSyBTnsiKIukKiQ2ztqGkszkMP6f1yG5y1xc",
-            authDomain: "robotsticks-9519d.firebaseapp.com",
-            //authDomain: "auth.robotsticks.com",
-            databaseURL: "https://robotsticks-9519d-default-rtdb.firebaseio.com",
-            projectId: "robotsticks-9519d",
-            storageBucket: "robotsticks-9519d.appspot.com",
-            messagingSenderId: "296707504609",
-            appId: "1:296707504609:web:a967839ad767bf1b2e3aa0",
-            measurementId: "G-DRKMQ3VJKQ"
-      };
-	  firebase.initializeApp(firebaseConfig);
+
     const dbRef = firebase.database().ref(code);
-
-    // Login Funtion
-    document.getElementById('dashboard').style.display = "none"
-
-    document.getElementById('login').addEventListener('click', GoogleLogin)
-    document.getElementById('logout').addEventListener('click', LogoutUser)
-
-    let provider = new firebase.auth.GoogleAuthProvider()
-
-    function GoogleLogin() {
-      console.log('Login Btn Call')
-      firebase.auth().signInWithPopup(provider).then(res => {
-        console.log(res.user)
-        document.getElementById('LoginScreen').style.display = "none"
-        document.getElementById('dashboard').style.display = "block"
-        showUserDetails(res.user)
-      }).catch(e => {
-        console.log(e)
-      })
-    }
-
-    function showUserDetails(user) {
-      /*document.getElementById('userDetails').innerHTML = `
-
-        `*/
-    }
-
-function checkAuthState() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          document.getElementById('LoginScreen').style.display = "none"
-          document.getElementById('dashboard').style.display = "block"
-          showUserDetails(user)
-        } else {
-
-        }
-      })
-    }
-
-    function LogoutUser() {
-      console.log('Logout Btn Call')
-      firebase.auth().signOut().then(() => {
-        document.getElementById('LoginScreen').style.display = "block"
-        document.getElementById('dashboard').style.display = "none"
-      }).catch(e => {
-        console.log(e)
-      })
-    }
-    checkAuthState()   
-  </script>
-
-  <script>
-
     // Renderer
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
