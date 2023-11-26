@@ -19,5 +19,6 @@ We are using the following technologies:
 
 ### Future enhancements
 - Coding - Enabling students to code parellely in multiple languages
+- Coding - Hardware for real World
 - Collaboration - Live collaboration to build and fight robots
 - AI Commentary - AI teaching tool that teaches students to code and good programming practices such as commenting
