@@ -83,6 +83,7 @@
   z-index: 999; 
 }
 
+
   </style>  
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>	
   <script src="https://cdn.jsdelivr.net/npm/three@0.124/build/three.js"></script>
@@ -279,9 +280,9 @@ scene.background = bgTexture;
     const grid = new THREE.GridHelper(20, 20);
     scene.add(grid);
 
-    // Stick (Sample)
+    // transformControls
     const transformControls = new THREE.TransformControls(camera, renderer.domElement);
-  
+    transformControls.setSize( 2 ); // 2x default size
 
 // geometry from stick3d.js data
 const geometry = new THREE.BufferGeometry();
@@ -309,8 +310,8 @@ const material = new THREE.MeshBasicMaterial({
 const dragControls = new THREE.DragControls(draggableObjects, camera, renderer.domElement);
 
 dragControls.addEventListener('dragstart', function(event) {
-  controls.enabled = true;
-  console.log("Controls enabled");
+  //controls.enabled = false;
+  console.log("Controls disabled");
 
 });
     // Raycaster
@@ -640,13 +641,14 @@ console.log("Click outside Sticks");
       render(); // Render
     }
     transformControls.addEventListener('dragging-changed', function(event) {
-      controls.enabled = !event.value;
+      controls.enabled = true;
       console.log("dragging changed");
             if (event.value) {
         // Transformation in progress, do nothing
+        controls.enabled = false;
       } else {
 // Transformation finished
-
+controls.enabled = true;
         // Get the object that was transformed
         const transformedObject = transformControls.object;
 
