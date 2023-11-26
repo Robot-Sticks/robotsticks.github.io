@@ -9,7 +9,7 @@ Use Live preview visual studio plugin to preview the index.html file in root
 
 ## About 
 
-This project is used to teach underprivileged kids robotics, designed to be used with the popsickle stick robot. 
+This project is focused on teaching robotics with an emphasis on affordability. It is designed to be used with the popsicle stick.
 
 ### Technology stack used 
 We are using the following technologies:
