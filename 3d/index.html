@@ -317,6 +317,8 @@ dragControls.addEventListener('dragstart', function(event) {
     // Raycaster
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
+    raycaster.setFromCamera(mouse, camera); //Raycasting on mouse click to better detect the arrows:
+    raycaster.intersectObject(transformControls);
 
 // Update scene sticks whenever there is a change in the database
 dbRef.on('value', function(snapshot) {
@@ -638,6 +640,8 @@ console.log("Click outside Sticks");
       requestAnimationFrame(animate);
 
       controls.update(); // Orbit controls
+      controls.enableDamping = true;  
+controls.dampingFactor = 0.1;
       render(); // Render
     }
     transformControls.addEventListener('dragging-changed', function(event) {
@@ -645,7 +649,7 @@ console.log("Click outside Sticks");
       console.log("dragging changed");
             if (event.value) {
         // Transformation in progress, do nothing
-        controls.enabled = false;
+        controls.enabled = false; /// Disable controls during dragging
       } else {
 // Transformation finished
 controls.enabled = true;
