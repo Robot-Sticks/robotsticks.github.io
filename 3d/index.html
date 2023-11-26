@@ -307,8 +307,11 @@ const material = new THREE.MeshBasicMaterial({
 
 // Drag controls
 const dragControls = new THREE.DragControls(draggableObjects, camera, renderer.domElement);
+
 dragControls.addEventListener('dragstart', function(event) {
   controls.enabled = true;
+  console.log("Controls enabled");
+
 });
     // Raycaster
     const raycaster = new THREE.Raycaster();
@@ -607,7 +610,14 @@ function clickOntheStick(event) {
     // Change the color of the stick to a random color
     //const newColor = new THREE.Color(0xffffff);
     //clickedStick.material.color.copy(newColor);
-  }
+  }else {
+
+// deselect the stick
+
+console.log("Click outside Sticks");
+//transformControls.detach(); 
+
+}
 }
 
 
@@ -631,7 +641,7 @@ function clickOntheStick(event) {
     }
     transformControls.addEventListener('dragging-changed', function(event) {
       controls.enabled = !event.value;
-      
+      console.log("dragging changed");
             if (event.value) {
         // Transformation in progress, do nothing
       } else {
