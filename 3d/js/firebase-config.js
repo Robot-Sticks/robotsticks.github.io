@@ -34,33 +34,35 @@ function GoogleLogin() {
       console.log(res.user);
       document.getElementById("LoginScreen").style.display = "none";
       document.getElementById("dashboard").style.display = "block";
+      document.getElementById("userDetails").style.display = "block";
       showUserDetails(res.user);
     })
     .catch((e) => {
       console.log(e);
     });
 }
-
-function showUserDetails(user) {
-  document.getElementById("userDetails").innerHTML = ``;
-}
 /*
 Add in body: <div id="userDetails"></div>
-  
+*/  
 function showUserDetails(user) {
     document.getElementById('userDetails').innerHTML = `
-        <img src="${user.photoURL}" style="width:10%">
-        <p>Name: ${user.displayName}</p>
-        <p>Email: ${user.email}</p>
+      <div class='login-info'>
+        <img src="${user.photoURL}" class="profile-photo">
+        <div class='user-info'>
+          <p>Name: ${user.displayName}</p>
+          <p>Email: ${user.email}</p>
+        </div>
+      </div>
       `
   }
-*/
+
 function checkAuthState() {
     
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       document.getElementById("LoginScreen").style.display = "none";
       document.getElementById("dashboard").style.display = "block";
+      document.getElementById("userDetails").style.display = "block";
       showUserDetails(user);
     } else {
     }
@@ -75,6 +77,7 @@ function LogoutUser() {
     .then(() => {
       document.getElementById("LoginScreen").style.display = "block";
       document.getElementById("dashboard").style.display = "none";
+      document.getElementById('userDetails').style.display = "none";
     })
     .catch((e) => {
       console.log(e);
