@@ -18,9 +18,29 @@
       flex-direction: column;
       min-height: 100vh;
     }
-    .container {
+    .container   {
       flex: 1;
+      justify-self: end;
     }
+    .login-info {
+      display: flex;               
+      align-items: center;
+      align-self: flex-end;
+    }
+    .login-info img {
+      height: 75px;      
+    }
+    .user-info {
+      display: inline-block;
+    }
+    .user-info p {
+      margin-bottom: 0;
+    }
+
+    .navbar {
+      display: flex;
+    }
+
     footer {
       background-color: #f8f9fa; /* Background footer */
       padding: 20px 0;
@@ -28,7 +48,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-    }
+    }    
   </style>
 </head>
 <div style="position: fixed; left: -50px; bottom: 10px; background-color: #f44336; color: white; padding: 5px 60px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
@@ -42,7 +62,7 @@
   <div id="dashboard">
     <button id="logout">Logout</button>
   </div>
-  
+  <div id="userDetails"></div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
