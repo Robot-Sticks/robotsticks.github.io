@@ -625,6 +625,9 @@ function clickOntheStick(event) {
 // deselect the stick
 
 console.log("Click outside Sticks");
+// Remove transformControls affter click ouside
+scene.remove(transformControls); 
+
 //transformControls.detach(); 
 
 }
