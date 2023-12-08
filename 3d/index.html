@@ -260,6 +260,16 @@ window.addEventListener('resize', ajustSizeButtonAdd);
 
     const dbRef = firebase.database().ref(code);
     // Renderer
+
+       //!!!!SHADOWS!!!!
+       renderer = new THREE.WebGLRenderer( { antialias: true } );
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
+      container.appendChild( renderer.domElement );
+
+
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
