@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RobotSticks</title>
+	<link rel="stylesheet" id="font-awesome"  href="libs/font-awesome.min.css" type="text/css" media="all" />
+
+  <link rel="icon" type="image/png" href="../image/favicon-32x32.png" sizes="32x32">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet"  href="css/compile-progstick.css" type="text/css" media="all" />
+
+  <meta name="description" content="RobotSticks - Create, Share and Explore Projects in Popsicle Sticks">
+  <style>
+    body { 
+      margin: 0;
+    	font-family: Arial;   
+    }
+    a {
+      text-decoration: none;
+      color: #20477a;
+    }
+    .ace_editor {
+      font-size: 14px !important;
+    }
+    
+    #button-container {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      display: flex;
+      order: 2;
+      flex-direction: row;  
+    }
+    #button-container button {
+      padding: 10px; 
+    }
+    @media only screen and (max-width: 600px) {
+      body {
+        font-size: 40px;
+      }
+    }
+    .container {
+      flex: 1;
+    }
+    footer {
+      background-color: #f8f9fa; /* Footer background color */
+      padding: 20px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width:0;
+    }
+    #addStickButton {
+    position: absolute;
+    /* z-index: 1; */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    order: 1;
+    }
+  #addRobotButton {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); 
+  }
+  #CodeRobotButton {
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%); 
+  }
+  .code {
+  padding-top: 60px; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; 
+}
+
+
+  </style>  
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>	
+  <script src="https://cdn.jsdelivr.net/npm/three@0.124/build/three.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.124/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.124/examples/js/controls/DragControls.js"></script>
+<!-- Loaders for model .OBJ -->  
+<script src="https://cdn.jsdelivr.net/npm/three@0.124/examples/js/controls/TransformControls.js"></script>
+<!-- Touch Control -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<!-- Loaders Stick3d.js -->  
+<script src="stick3D.js"></script>
+</head>
+
+<body>
+  <div hidden  class="code" id="code_1" data-ace-editor-id="1"
+	data-ace-editor-allow-execution="true" data-ace-editor-hide-vars="false" 
+	data-ace-editor-script-name="code.progs" data-ace-editor-default-get="" data-ace-editor-default-post="">
+<pre class="editor" id="code_editor_1" >
+	#define LED_PIN PC3
+
+	void setup() {
+	
+	  pinMode(LED_PIN, OUTPUT);
+	
+	}
+	
+	void loop() {
+	  digitalWrite(LED_PIN, LOW);
+	
+	  delay(1000);
+	  digitalWrite(LED_PIN, HIGH);
+	  delay(1000);
+	
+	}</pre></div>
+
+  <div style="position: fixed; left: -80px; bottom: 20px; background-color: #f44336; color: white; padding: 5px 80px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
+  Beta 0.13t<br>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>  
+<script>
+const urlParamsDev = new URLSearchParams(window.location.search);
+
+// const dev = urlParamsDev.get('dev');
+
+// if(dev === 'on') {
+//   console.log("Mode DEV active");
+//   // Add here for Mode DEV
+  
+// }
+// CodeRobotButton
+</script>
+  <script>
+
+
+function ajustSizeButtonAdd() {
+//   const button = document.getElementById('addStickButton');
+
+//   if (window.innerWidth > window.innerHeight) {
+//     // Tela horizontal
+//     button.style.width = '30%';
+//     button.style.height = '10';
+//   } else {
+//     // Tela vertical
+//     button.style.width = '60%';
+//     button.style.height = '20';
+//     button.style.fontSize = '300%'; // Increase font size to 20 pixels
+
+//   }
+// const buttonLogin = document.getElementById('login');
+
+// if (window.innerWidth > window.innerHeight) {
+//   // Tela horizontal
+//   buttonLogin.style.width = '100%';
+//   buttonLogin.style.height = '10';
+// } else {
+// // Horizontal screen  buttonLogin.style.width = '300%';
+//   buttonLogin.style.height = '20';
+//   buttonLogin.style.fontSize = '250%'; // Increase font size to 20 pixels
+
+// }
+// const buttonLogout = document.getElementById('logout');
+
+// if (window.innerWidth > window.innerHeight) {
+// // Horizontal screen  buttonLogout.style.width = '100%';
+//   buttonLogout.style.height = '10';
+// } else {
+//   // Screen
+//   buttonLogout.style.width = '300%';
+//   buttonLogout.style.height = '20';
+//   buttonLogout.style.fontSize = '180%'; // Increase the font size to 20 pixels
+
+// }
+// const navbarbrand = document.getElementById('navbar-brand');
+
+// if (window.innerWidth > window.innerHeight) {
+// // Horizontal screen
+
+// } else {
+//  // Horizontal screen
+
+//   navbarbrand.style.fontSize = '350%'; // Increase font size to 20 pixels
+
+// }
+}
+
+// Call the function when the page loads and whenever the screen orientation changes
+window.addEventListener('load', ajustSizeButtonAdd);
+window.addEventListener('resize', ajustSizeButtonAdd);    
+  </script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script> -->
+	<script>
+        // Get the query string from the URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString); // Parse the query string to get the parameter
+        const code = urlParams.get("p"); // Get the value of the "p" parameter
+        if(!code) {
+        console.log("No receive code");  
+        window.location.href = "../index.html"; // Redirect to the index page for create new Code
+      }
+        console.log(code); // This will display "code" in the console
+    </script>
+
+    <h1></h1>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" id="navbar-brand" href="/">RobotSticks</a>  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <div id="LoginScreen">
+    <button id="login">Login</button>
+  </div>
+  <div id="dashboard">
+    <button id="logout">Logout</button>
+  </div>
+</nav>
+ --><!--Button for Login if add button and no login active-->
+<!-- 
+  <select id="language-selector" class="form-control" style="width: 200px;">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="pt">Português</option>
+    <option value="de">Deutsch</option>
+    <option value="es">Español</option>
+  </select>
+  <footer class="bg-light py-3">
+    <div class="container"> 
+    -->
+    <!--  <p class="text-muted text-center" id="copyright-message">&copy; RobotSticks 2023</p>-->
+    <!-- </div> 
+  </footer> -->
+  <!-- <div><button   class="button" id="addStickButton" style="display: inline-block;">Add Stick</button></div>		 -->
+  <!-- <div><button  hidden class="button" id="addRobotButton" style="display: inline-block;">Add Robot</button></div>	-->
+    <!-- Hide for denveloper -->	 
+  <!-- <div><button  hidden class="button" id="CodeRobotButton" style="display: inline-block;">Code Robot</button></div>		-->
+    <!-- Hide for denveloper -->	 
+
+
+<!-- <div id="button-container" hidden style="display: block;">
+    <button  class="button" id="girar-esquerda" style="display: inline-block;">Turn Left</button>
+    <button  class="button" id="girar-direita" style="display: inline-block;">Turn Right</button>
+    <button  class="button" id="girar-frente" style="display: inline-block;">Turn Forward</button>
+    <button  class="button" id="girar-atras" style="display: inline-block;">Turn Back</button>
+</div> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+  <script src="./js/firebase-config.js"></script> -->
+
+  <script>
+
+
+    console.log("hi")
+
+
+
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
+
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
+    camera.position.z = 1000;
+
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0xf0f0f0 );
+
+
+
+    // scene.add( new THREE.AmbientLight( 0x505050 ) );
+
+
+
+    // for (var i = 0; i < 10; i++) {
+    //   const light = new THREE.SpotLight( 0xffffff, 1.5 );
+    //   y = Math.random() * 20-10;
+    //   z = Math.random() * 20-10;
+    //   light.position.set( 0, 20, 0 );
+    //   light.angle = Math.PI;
+    //   light.castShadow = true;
+    //   light.shadow.camera.near = 10;
+    //   light.shadow.camera.far = 40;
+    //   light.shadow.mapSize.width = 1024;
+    //   light.shadow.mapSize.height = 1024;
+    //   scene.add( light );
+    // }
+
+    //!!!!SHADOWS!!!!
+
+    // const spotLight = new THREE.SpotLight( 0xffffff );
+    // spotLight.position.set( 100, 1000, 100 );
+    // //spotLight.map = new THREE.TextureLoader().load( url );
+
+    // spotLight.castShadow = true;
+
+    // spotLight.shadow.mapSize.width = 1024;
+    // spotLight.shadow.mapSize.height = 1024;
+
+    // spotLight.shadow.camera.near = 500;
+    // spotLight.shadow.camera.far = 4000;
+    // spotLight.shadow.camera.fov = 30;
+
+    // scene.add( spotLight );
+
+    const light = new THREE.SpotLight( 0xffffff, 1.5 );
+    light.position.set( 0, 500, 2000 );
+    light.angle = Math.PI / 9;
+
+    light.castShadow = true;
+    light.shadow.camera.near = 100;
+    light.shadow.camera.far = 400;
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+
+    scene.add( light );
+
+
+    const light2 = new THREE.SpotLight( 0xdddddd, 1.5 );
+    light2.position.set( 0, -50, -1000 );
+    light2.angle = -Math.PI / 9;
+
+    light2.castShadow = true;
+    light2.shadow.camera.near = 100;
+    light2.shadow.camera.far = 400;
+    light2.shadow.mapSize.width = 1024;
+    light2.shadow.mapSize.height = 1024;
+
+    scene.add( light2 );
+
+
+
+
+    group = new THREE.Group();
+    scene.add( group );
+
+
+
+//     //const geometry = new THREE.BoxGeometry( 40, 40, 40 ); //cjm commented
+//     const geometry = new THREE.SphereGeometry( 20, 20, 20 );
+
+//     let lastNodeWrapper = null;
+//     let notifier = new Notifier();
+
+
+
+
+
+
+
+
+//     const dbRef = firebase.database().ref(code);
+//     // Renderer
+      //const renderer = new THREE.WebGLRenderer();
+      //renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+      //!!!!SHADOWS!!!!
+      renderer = new THREE.WebGLRenderer( { antialias: true } );
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
+      container.appendChild( renderer.domElement );
+
+//     // Scene
+//     const scene = new THREE.Scene();
+
+//     // Background
+//     const loader = new THREE.TextureLoader();
+//     const bgTexture = loader.load('background.jpg');
+//     bgTexture.blur = 0.5;
+    
+// // Set the texture as the background color of the scene
+// //scene.background = bgTexture;
+  
+    
+//     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
+//     camera.position.set(0, 10, 20);
+//     camera.lookAt(0, 0, 0);
+
+//     // Controls
+     const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+//     // Grid
+    const grid = new THREE.GridHelper(20, 20);
+    scene.add(grid);
+
+    // transformControls
+    const transformControls = new THREE.TransformControls(camera, renderer.domElement);
+    transformControls.setSize( 2 ); // 2x default size
+
+// // geometry from stick3d.js data
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(stick3D.data.attributes.position.array, 3));
+// geometry.setAttribute('wireframe', false);
+geometry.scale(0.04, 0.04, 0.04);
+geometry.computeVertexNormals(); //!!!!SHADOWS!!!! (THE MAGIC LINE)
+// geometry.setIndex( indices );
+
+// const geometry = new THREE.SphereGeometry( 20, 20, 20 );
+// geometry.scale(0.04, 0.04, 0.04);
+
+                    // const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xff0000 } ) );
+
+                    // object.position.x = Math.random() * 10;
+                    // object.position.y = Math.random() * 10;
+                    // object.position.z = Math.random() * 10;
+
+                    // object.rotation.x = Math.random() * 2 * Math.PI;
+                    // object.rotation.y = Math.random() * 2 * Math.PI;
+                    // object.rotation.z = Math.random() * 2 * Math.PI;
+
+                    // //cjm commented:
+                    // // object.scale.x = Math.random() * 2 + 1;
+                    // // object.scale.y = Math.random() * 2 + 1;
+                    // // object.scale.z = Math.random() * 2 + 1;
+
+                    // object.castShadow = true;
+                    // object.receiveShadow = true;
+
+                    // scene.add( object );
+
+for ( let i = 0; i < 50; i ++ ) { //cjm was 200
+
+                    const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+
+                    object.position.x = Math.random() * 20-10;
+                    object.position.y = Math.random() * 20-10;
+                    object.position.z = Math.random() * 20-10;
+
+                    object.rotation.x = Math.random() * 2 * Math.PI;
+                    object.rotation.y = Math.random() * 2 * Math.PI;
+                    object.rotation.z = Math.random() * 2 * Math.PI;
+
+                    //cjm commented:
+                    // object.scale.x = Math.random() * 2 + 1;
+                    // object.scale.y = Math.random() * 2 + 1;
+                    // object.scale.z = Math.random() * 2 + 1;
+
+                    object.castShadow = true;
+                    object.receiveShadow = true;
+
+                    scene.add( object );
+                  }
+
+
+// // Ambient light
+
+// // const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Color and intensity of ambient light
+// // //ambientLight.castShadow = true;
+// // scene.add(ambientLight);
+
+// const textureLoader = new THREE.TextureLoader();
+// const texture = textureLoader.load('wood.jpg');
+// const material = new THREE.MeshBasicMaterial({
+//   map: texture
+// });
+
+
+//     const light2 = new THREE.SpotLight( 0xdddddd, 1.5 );
+//     light2.position.set( 0, 10, 0 );
+//     light2.angle = -Math.PI / 9;
+//     light2.castShadow = true;
+//     light2.shadow.camera.near = 10;
+//     light2.shadow.camera.far = 40;
+//     light2.shadow.mapSize.width = 10;
+//     light2.shadow.mapSize.height = 10;
+//     scene.add( light2 );
+
+//     // Draggable sticks.
+     const draggableObjects = [];
+
+// Drag controls
+const dragControls = new THREE.DragControls(draggableObjects, camera, renderer.domElement);
+
+
+
+dragControls.addEventListener('dragstart', function(event) {
+  //controls.enabled = false;
+  console.log("Controls disabled");
+
+});
+    // Raycaster
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    raycaster.setFromCamera(mouse, camera); //Raycasting on mouse click to better detect the arrows:
+    raycaster.intersectObject(transformControls);
+
+// Update scene sticks whenever there is a change in the database
+// dbRef.on('value', function(snapshot) {
+// // Clear the scene before adding sticks again
+//   draggableObjects.forEach(objeto => {
+//     scene.remove(objeto);
+ 
+//   });
+//   draggableObjects.length = 0;
+
+//   snapshot.forEach(function(SticK) {
+//     const cubo = new THREE.Mesh(geometry, material);
+//     cubo.position.set(SticK.val().posicao.x, SticK.val().posicao.y, SticK.val().posicao.z);
+//     cubo.rotation.set(SticK.val().rotacao.x, SticK.val().rotacao.y, SticK.val().rotacao.z);
+//     cubo.userData.id = SticK.key; //  ID userData
+//     cubo.castShadow = true;
+//     cubo.receiveShadow = true;
+    
+//     draggableObjects.push(cubo);
+//     console.log("shadow")
+//     scene.add(cubo);
+//     console.log("Add Stick from FB!");
+//   });
+// });
+// dragControls.enabled = false; // Disable dragging
+
+
+// reference to the users table:
+//const usersRef = firebase.database().ref('users');
+
+
+// Adding a new stick
+function addSticks() {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    alert("You need to be logged in to add a stick!"); //Alert for Login if not logged in
+    //window.location.href = "index.html";
+
+  GoogleLogin();
+  return;
+}
+  const cubo = new THREE.Mesh(geometry, material);
+  cubo.position.set(0, 0.05, 0);
+  const novoPalitoRef = dbRef.push();
+  const novoPalitoId = novoPalitoRef.key;
+  cubo.userData.id = novoPalitoId; // ID  userData
+  draggableObjects.push(cubo);
+  //!!!!SHADOWS!!!!
+  cubo.castShadow=true;
+  cubo.receiveShadow=true;
+  scene.add(cubo);
+
+// entry for this user in the users table, with the project ID
+const userId = currentUser.uid;
+
+
+usersRef.child(userId).transaction(projetos => {
+  if (projetos) {
+    projetos.push(code);
+  } else {
+    projetos = [code]; 
+  }
+  
+  return projetos;
+})
+  // Add new Stick
+  novoPalitoRef.set({
+    posicao: {
+      x: cubo.position.x,
+      y: cubo.position.y,
+      z: cubo.position.z
+    },
+    rotacao: {
+      x: cubo.rotation.x,
+      y: cubo.rotation.y,
+      z: cubo.rotation.z
+    },
+    idStick: novoPalitoId,
+    idUser: currentUser.uid
+  });
+  console.log("Add Stick!");
+}
+
+// Adding a new Robot
+const RobotGeometry = new THREE.BoxGeometry(1, 1, 1); 
+const RobotMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+
+let robotCube;
+
+function addRobot() {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    alert("You need to be logged in to add a Robot!"); //Alert for Login if not logged in
+    //window.location.href = "index.html";
+
+  GoogleLogin();
+  return;
+}
+/*
+  const cubo = new THREE.Mesh(geometry, material);
+  cubo.position.set(0, 0.05, 0);
+  const novoPalitoRef = dbRef.push();
+  const novoPalitoId = novoPalitoRef.key;
+  cubo.userData.id = novoPalitoId; // ID  userData
+  draggableObjects.push(cubo);
+  scene.add(cubo);
+
+// entry for this user in the users table, with the project ID
+const userId = currentUser.uid;
+
+
+usersRef.child(userId).transaction(projetos => {
+  if (projetos) {
+    projetos.push(code);
+  } else {
+    projetos = [code]; 
+  }
+  
+  return projetos;
+})
+  // Add new Stick
+  novoPalitoRef.set({
+    posicao: {
+      x: cubo.position.x,
+      y: cubo.position.y,
+      z: cubo.position.z
+    },
+    rotacao: {
+      x: cubo.rotation.x,
+      y: cubo.rotation.y,
+      z: cubo.rotation.z
+    },
+    idStick: novoPalitoId,
+    idUser: currentUser.uid
+  }); */
+  const RoboT = new THREE.Mesh(RobotGeometry, RobotMaterial);
+  RoboT.position.set(0, 1, 0);
+  scene.add(RoboT);
+
+  console.log("Add Robot!");
+}
+function CodeShow() {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    alert("You need to be logged in to add a Robot!"); //Alert for Login if not logged in
+    //window.location.href = "index.html";
+
+  GoogleLogin();
+  return;
+}
+const codeDiv = document.querySelector(".code");
+  codeDiv.removeAttribute("hidden");
+  console.log("Code Show!");
+}
+//saveRotacao function that updates the database:
+      function salvarRotacao() {
+
+      if (stickSelected) {
+
+        const rotacao = stickSelected.rotation;
+        
+        const id = stickSelected.userData.id;
+        
+        const ref = firebase.database().ref(code + '/' + id);
+
+        ref.update({
+          rotacao: {
+            x: rotacao.x,
+            y: rotacao.y,
+            z: rotacao.z
+          }
+        });
+
+      }
+
+      }
+
+// Variable to store the selected stick
+    let stickSelected = null;
+
+// Variable to control the direction of rotation
+    let direcaoGiro = 1;
+
+    // Variable to control the rotation direction
+    function selectStick(SticK) {
+    // Mostrar botões de mover
+
+  
+    //XYZ Gizmo  
+    transformControls.attach(SticK);
+    scene.add(transformControls);
+    dragControls.enabled = false;
+
+      deselectStick(); 
+
+      if (stickSelected) {
+        //stickSelected.material.color.set(0x00ff00); // Set the color back to the original
+
+      }
+      stickSelected = SticK;
+      //SticK.material.color.set(0xffff00); // Set the color of the selected stick
+
+      console.log("Selected");
+      const buttonContainer = document.getElementById('button-container');
+      buttonContainer.removeAttribute('hidden');
+    }
+
+    // Function to rotate the selected stick
+    function rotatestickSelected(direcao) {
+      if (stickSelected) {
+        stickSelected.rotation.y += THREE.MathUtils.degToRad(5 * direcao); // Rotate the selected stick by 5 degrees in the current direction
+        salvarRotacao();
+      }
+    }
+
+    // Function to rotate the selected stick vertically forward
+    function girarPalitoFrente() {
+      if (stickSelected) {
+        stickSelected.rotation.x += THREE.MathUtils.degToRad(5); // Rotate the selected stick vertically forward by 5 degrees
+        salvarRotacao();
+      }
+    }
+
+    // Function to rotate the selected stick vertically backward
+    function girarPalitoAtras() {
+      if (stickSelected) {
+        stickSelected.rotation.x -= THREE.MathUtils.degToRad(5); // Rotate the selected stick vertically backward by 5 degrees
+        salvarRotacao();
+      }
+    }
+
+    // Add functionality to the new buttons
+      //Add Stick for Add
+      
+    //document.getElementById("addStickButton").addEventListener("click", addSticks);
+    //document.getElementById("addRobotButton").addEventListener("click", addRobot);
+    //document.getElementById("CodeRobotButton").addEventListener("click", CodeShow);
+
+
+    //document.getElementById("girar-esquerda").addEventListener("click", () => rotatestickSelected(-1));
+    //document.getElementById("girar-direita").addEventListener("click", () => rotatestickSelected(1));
+    //document.getElementById("girar-frente").addEventListener("click", girarPalitoFrente);
+    //document.getElementById("girar-atras").addEventListener("click", girarPalitoAtras);
+
+// Function to deselect the currently selected stick
+function deselectStick() {
+  //hides the move buttons
+
+  if (stickSelected) {
+//stickSelected.material.color.set(0x00ff00); // Redefine a cor para a original
+    stickSelected = null; // Rotate the selected stick by 5 degrees in the current direction
+
+  }
+}
+// Hammer.js 
+const mc = new Hammer(renderer.domElement);
+
+mc.on("tap", function(ev) {
+
+  // Convert touch coordinates to mouse position
+  const x = ev.center.x; 
+  const y = ev.center.y;
+
+  const mouse = new THREE.Vector2();
+  mouse.x = (x / window.innerWidth) * 2 - 1;
+  mouse.y = - (y / window.innerHeight) * 2 + 1; 
+
+  // Call click function
+  clickOntheStick({clientX: x, clientY: y});
+
+});
+
+function clickOntheStick(event) {
+
+  // Logic for selecting sticks...
+
+  raycaster.setFromCamera(mouse, camera);
+
+
+}
+
+// Function to handle stick clicks
+function clickOntheStick(event) {
+  // Calculate the click position on the canvas
+  const rect = renderer.domElement.getBoundingClientRect();
+  const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+// Calculate the click position on the screen
+  mouse.set(x, y);
+
+  // Perform raycasting to check for intersection with the stick
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(draggableObjects);
+
+  if (intersects.length > 0) {
+    const clickedStick = intersects[0].object;
+    selectStick(clickedStick);
+    // Change the color of the stick to a random color
+    //const newColor = new THREE.Color(0xffffff);
+    //clickedStick.material.color.copy(newColor);
+  }else {
+
+// deselect the stick
+
+console.log("Click outside Sticks");
+// Remove transformControls affter click ouside
+scene.remove(transformControls); 
+
+//transformControls.detach(); 
+
+}
+}
+
+
+
+  
+
+    renderer.domElement.addEventListener("click", clickOntheStick, false); // Clicks
+  
+    // Render
+    function render() {
+      renderer.render(scene, camera);
+
+    }
+
+    // Animation
+    function animate() {
+      requestAnimationFrame(animate);
+
+      controls.update(); // Orbit controls
+      controls.enableDamping = true;  
+controls.dampingFactor = 0.1;
+      render(); // Render
+    }
+    transformControls.addEventListener('dragging-changed', function(event) {
+      controls.enabled = true;
+      console.log("dragging changed");
+            if (event.value) {
+        // Transformation in progress, do nothing
+        controls.enabled = false; /// Disable controls during dragging
+      } else {
+// Transformation finished
+controls.enabled = true;
+        // Get the object that was transformed
+        const transformedObject = transformControls.object;
+
+        // Get the new position and rotation
+        const newPosition = transformedObject.position;
+        const newRotation = transformedObject.rotation;
+
+        // Get the object ID
+        const objectId = transformedObject.userData.id;
+
+        // Update the database
+        const dbRef = firebase.database().ref(code + '/' + objectId);
+        dbRef.update({
+          posicao: {
+            x: newPosition.x,
+            y: newPosition.y,
+            z: newPosition.z  
+          },
+          rotacao: {
+            x: newRotation.x,
+            y: newRotation.y,
+            z: newRotation.z
+          }
+        });
+
+     // Re-enable drag controls
+        
+
+      }
+    });
+    // Start animation
+    animate();
+
+  </script>
+
+<script type='text/javascript' src='libs/ace/ace.js'></script>
+<script type='text/javascript' src='libs/FileSaver.js'></script>
+<script type='text/javascript' src='js/compile-progstick.js'></script>
+
+  <script>
+    jQuery('div[data-ace-editor-id]').each(function() {
+      var url='http://compile.progstick.com/compile/compile3/execute.php'; 
+      var language = 'en'; //Choose 'de' for German
+      new OnlineCompilerProgstick(this, language, url);
+    });
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>
