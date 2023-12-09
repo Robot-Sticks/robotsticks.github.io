@@ -120,7 +120,7 @@
 	}</pre></div>
 
   <div style="position: fixed; left: -80px; bottom: 20px; background-color: #f44336; color: white; padding: 5px 80px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
-  Beta 0.13t<br>
+  Beta 0.14t<br>
   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -260,16 +260,6 @@ window.addEventListener('resize', ajustSizeButtonAdd);
 
     const dbRef = firebase.database().ref(code);
     // Renderer
-
-       //!!!!SHADOWS!!!!
-       renderer = new THREE.WebGLRenderer( { antialias: true } );
-      renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFShadowMap;
-      container.appendChild( renderer.domElement );
-
-
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
