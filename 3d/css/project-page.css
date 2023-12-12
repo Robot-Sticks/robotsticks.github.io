@@ -1,0 +1,71 @@
+body { 
+    margin: 0;
+      font-family: Arial;   
+  }
+  a {
+    text-decoration: none;
+    color: #20477a;
+  }
+  .ace_editor {
+    font-size: 14px !important;
+  }
+  
+  #button-container {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    display: flex;
+    order: 2;
+    flex-direction: row;  
+  }
+  #button-container button {
+    padding: 10px; 
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      font-size: 40px;
+    }
+  }
+  .container {
+    flex: 1;
+  }
+  footer {
+    background-color: #f8f9fa; /* Footer background color */
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width:0;
+  }
+  #addStickButton {
+  position: absolute;
+  /* z-index: 1; */
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  order: 1; 
+  
+}
+#addRobotButton {
+position: absolute;
+left: 0;
+top: 50%;
+transform: translateY(-50%); 
+}
+#CodeRobotButton {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  transform: translateY(-50%); 
+}
+.code {
+padding-top: 60px; 
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 999; 
+}
