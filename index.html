@@ -83,25 +83,6 @@
   </div>
 </nav>
 
-<!--
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
-  
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        
-      </li>      
-    </ul>
-  </div>
-</nav>
-    -->  
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-4" id="welcome-message">
@@ -175,9 +156,9 @@
     <script>
       const characters = '1234567890';
       const code = Array.from({ length: 20 }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
-      const NewProjectCode = new Date().toISOString().slice(0, 10).replace(/-/g, '') + code;
+      const newProjectCode = new Date().toISOString().slice(0, 10).replace(/-/g, '') + code;
       const startBuildingLink = document.querySelector('.btn-primary');
-      startBuildingLink.href = `3d?p=${NewProjectCode}`;
+      startBuildingLink.href = `3d?p=${newProjectCode}`;
     </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -186,7 +167,6 @@
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
