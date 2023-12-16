@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
   <link rel="manifest" href="image/site.webmanifest">  
-  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <style>
     /* CSS fixed */
@@ -55,8 +54,9 @@
       bottom: 0;
       width: 100%;
     }    
-  </style>
+  </style>  
 </head>
+
 <div style="position: fixed; left: -50px; bottom: 10px; background-color: #f44336; color: white; padding: 5px 60px; font-weight: bold; z-index: 9999; transform: rotate(45deg);">
   Beta <br>
 </div>
@@ -80,7 +80,7 @@
     </div>  
     <div id="userDetails"></div>
     
-  </div>
+    </div>
 </nav>
 
   <div class="jumbotron">
@@ -94,6 +94,16 @@
       <a class="btn btn-primary btn-lg" href="#" role="button" id="start-building-button">Start Building</a>
     </div>
   </div>
+
+  <!-- Project list -->  
+  <div class="album bg-light" id="projectAlbum">
+    <div class="container">
+      <h1> Projects </h1>
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  
   <select id="language-selector" class="form-control" style="width: 200px;">
     <option value="en">English</option>
     <option value="fr">Français</option>
@@ -101,76 +111,26 @@
     <option value="de">Deutsch</option>
     <option value="es">Español</option>
   </select>
+
   <footer class="bg-light py-3">
     <div class="container">
       <p class="text-muted text-center" id="copyright-message">&copy; RobotSticks 2023</p>
     </div>
   </footer>
 
-  <script>
-    // language
-    function setLanguage(language) {
-      const translations = {
-        en: {
-          welcomeMessage: "Welcome to Palitos.XYZ!",
-          platformDescription: "Try our platform for building educational projects with Popsicle stick 3D models to inspire children around the world to make projects with real wooden sticks.",
-          startBuildingButton: "Start Building",
-          copyrightMessage: "&copy; LCE.toys 2023",
-        },
-        fr: {
-          welcomeMessage: "Bienvenue sur Palitos.XYZ !",
-          platformDescription: "Essayez notre plateforme pour construire des projets éducatifs avec des modèles 3D en bâtonnets de glace pour inspirer les enfants du monde entier à réaliser des projets avec de vrais bâtonnets en bois.",
-          startBuildingButton: "Commencer la construction",
-          copyrightMessage: "&copy; LCE.toys 2023",
-        },
-        pt: {
-          welcomeMessage: "Bem-vindo ao Palitos.XYZ!",
-          platformDescription: "Experimente nossa plataforma para construir projetos educacionais com modelos 3D de palitos de picolé para inspirar crianças ao redor do mundo a fazer projetos com palitos de madeira reais.",
-          startBuildingButton: "Começar a construir",
-          copyrightMessage: "&copy; LCE.toys 2023",
-        },
-        de: {
-          welcomeMessage: "Willkommen bei Palitos.XYZ!",
-          platformDescription: "Probieren Sie unsere Plattform zum Bau von Bildungsprojekten mit 3D-Modellen aus Eis am Stiel, um Kinder auf der ganzen Welt zu inspirieren, Projekte mit echten Holzstäben zu gestalten.",
-          startBuildingButton: "Starten Sie den Bau",
-          copyrightMessage: "&copy; LCE.toys 2023",
-        },
-        es: {
-          welcomeMessage: "¡Bienvenido a Palitos.XYZ!",
-          platformDescription: "Pruebe nuestra plataforma para construir proyectos educativos con modelos 3D de palitos de helado para inspirar a los niños de todo el mundo a hacer proyectos con palitos de madera reales.",
-          startBuildingButton: "Comenzar a construir",
-          copyrightMessage: "&copy; LCE.toys 2023",
-        },
-      };
-      document.getElementById("welcome-message").textContent = translations[language].welcomeMessage;
-      document.getElementById("platform-description").textContent = translations[language].platformDescription;
-      document.getElementById("start-building-button").textContent = translations[language].startBuildingButton;
-      document.getElementById("copyright-message").innerHTML = translations[language].copyrightMessage;
-    }
-    // Adicione um ouvinte de evento para detectar alterações na seleção do idioma
-    document.getElementById("language-selector").addEventListener("change", function () {
-      const selectedLanguage = this.value;
-      setLanguage(selectedLanguage);
-    });
-  </script>
-    <script>
-      const characters = '1234567890';
-      const code = Array.from({ length: 20 }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
-      const newProjectCode = new Date().toISOString().slice(0, 10).replace(/-/g, '') + code;
-      const startBuildingLink = document.querySelector('.btn-primary');
-      startBuildingLink.href = `3d?p=${newProjectCode}`;
-    </script>
+  <script src="./3d/js/language-config.js"></script>
+  <script src="./3d/js/project-config.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-
+  
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
   <script src="./3d/js/firebase-config.js"></script>
 </body>
 
