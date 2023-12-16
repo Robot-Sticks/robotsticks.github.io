@@ -1,6 +1,7 @@
 // Your web app's Firebase configuration
-var firebaseConfig = {
-  /*
+
+/*var firebaseConfig = {
+
   apiKey: "AIzaSyBTnsiKIukKiQ2ztqGkszkMP6f1yG5y1xc",
   authDomain: "robotsticks-9519d.firebaseapp.com",
   databaseURL: "https://robotsticks-9519d-default-rtdb.firebaseio.com",
@@ -69,11 +70,21 @@ function checkAuthState() {
     
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+
       document.getElementById("LoginScreen").style.display = "none";
       document.getElementById("dashboard").style.display = "block";
-      document.getElementById("userDetails").style.display = "block";
-      showUserDetails(user);
+      
+      if (document.getElementById("userDetails")) {
+
+        document.getElementById("userDetails").style.display = "block";
+        showUserDetails(user);
+      }
+
+      showProjectList(true);
+    
     } else {
+      
+      showProjectList();
     }
   });
 }
@@ -92,4 +103,64 @@ function LogoutUser() {
       console.log(e);
     });
 }
+
+function showProjectList(showList = false) {
+
+  if (!document.getElementById("projectAlbum")) {
+
+    return;
+  }
+
+  console.log("showProjectList", showList);  
+
+  if (showList === true) {
+
+    const user = firebase.auth().currentUser;
+    console.log("/users/" + user.uid);
+    const dbRef = firebase.database().ref("/users/" + user.uid);
+    
+    var projectList = new Set(); 
+    
+    dbRef.once('value').then((snapshot) => {
+      
+      snapshot.forEach((element) => {
+        projectList.add(element.val());
+      });
+
+      console.log("project list inside", projectList); // Now it will show the populated set
+      console.log("project list size inside", projectList.size);
+
+      // Place your iteration and DOM manipulation code here
+      const projectAlbum = document.getElementById("projectAlbum");
+
+      projectAlbum.querySelector(".container").querySelector(".row").innerHTML = ' '; 
+      
+      projectList.forEach((projectId) => {
+      
+        console.log("project id", projectId);
+        
+        projectAlbum.querySelector(".container").querySelector(".row").innerHTML += 
+        `<a href="3d?p=${projectId}" class="col-md-4">
+          <div>
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" alt="Thumbnail" src="./3d/thumbnail.png" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+              <p class="card-thumbnail-text">${projectId}</p>
+            </div>
+          </div>
+        </a>`;
+      });
+  
+
+      document.getElementById("projectAlbum").style.display = "block";
+
+    }).catch((error) => {
+      console.error(error);
+    });
+
+  } else {
+    document.getElementById("projectAlbum").style.display = "none";
+  } 
+}
+
+
 checkAuthState();

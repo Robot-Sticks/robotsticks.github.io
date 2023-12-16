@@ -121,7 +121,6 @@ if (window.innerWidth > window.innerHeight) {
 window.addEventListener('load', ajustSizeButtonAdd);
 window.addEventListener('resize', ajustSizeButtonAdd);    
   </script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
 	<script>
         // Get the query string from the URL
         const queryString = window.location.search;
@@ -131,8 +130,9 @@ window.addEventListener('resize', ajustSizeButtonAdd);
         console.log("No receive code");  
         window.location.href = "../index.html"; // Redirect to the index page for create new Code
       }
-        console.log(code); // This will display "code" in the console
-    </script>
+      console.log(code); // This will display "code" in the console
+  </script>
+  
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <a class="navbar-brand" id="navbar-brand" href="/">RobotSticks</a>  
   
@@ -167,7 +167,7 @@ window.addEventListener('resize', ajustSizeButtonAdd);
     <!--  <p class="text-muted text-center" id="copyright-message">&copy; RobotSticks 2023</p>-->
     </div>
   </footer>
-  <div><button   class="button" id="addStickButton" style="display: inline-block;">Add Stick</button></div>		
+  <div><button  class="button" id="addStickButton" style="display: inline-block;">Add Stick</button></div>		
   <div><button  hidden class="button" id="addRobotButton" style="display: inline-block;">Add Robot</button></div>	<!--Hide for denveloper -->	
   <div><button  hidden class="button" id="CodeRobotButton" style="display: inline-block;">Code Robot</button></div>		<!--Hide for denveloper -->	
 
