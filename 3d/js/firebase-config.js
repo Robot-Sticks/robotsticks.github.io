@@ -1,6 +1,8 @@
 // Your web app's Firebase configuration
 
 var firebaseConfig = {
+  
+  // Claudio credentials
   /*
   
   apiKey: "AIzaSyBTnsiKIukKiQ2ztqGkszkMP6f1yG5y1xc",
@@ -12,13 +14,24 @@ var firebaseConfig = {
   appId: "1:296707504609:web:a967839ad767bf1b2e3aa0",
   measurementId: "G-DRKMQ3VJKQ",
 */
-  apiKey: "AIzaSyCt0IhN37bwI1Gp4xPBmhq8FY9bgrfrydM",
+  
+  /*apiKey: "AIzaSyCt0IhN37bwI1Gp4xPBmhq8FY9bgrfrydM",
   authDomain: "stickeducation-27116.firebaseapp.com",
   databaseURL: "https://stickeducation-27116-default-rtdb.firebaseio.com",
   projectId: "stickeducation-27116",
   storageBucket: "stickeducation-27116.appspot.com",
   messagingSenderId: "566576954504",
-  appId: "1:566576954504:web:fa4f51202373ba6c30733d"
+  appId: "1:566576954504:web:fa4f51202373ba6c30733d"*/
+
+  // Sai Credentials
+    apiKey: "AIzaSyDPb_-F1lebm0bFnz1-6gE2B5pDzhz-FVc",
+    authDomain: "robot-sticks.firebaseapp.com",
+    projectId: "robot-sticks",
+    storageBucket: "robot-sticks.appspot.com",
+    messagingSenderId: "1018626900208",
+    appId: "1:1018626900208:web:0ef0c0c8a1e6d08f270235",
+    measurementId: "G-XS0QD5DXRE"
+  
 };
 
 // Initialize Firebase
