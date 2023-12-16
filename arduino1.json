@@ -1,0 +1,40 @@
+{
+  "packages": [
+    {
+      "name": "RobotSticks",
+      "websiteURL": "https://www.RobotSticks.com/",
+      "maintainer": "LCE.toys",
+      "email": "c@LCE.toys",
+      "help": {
+        "online": "https://www.LCE.toys/"
+      },
+      "platforms": [
+        {
+          "name": "ProgStick",
+          "architecture": "RISC-V",
+          "version": "1.0.0",
+          "category": "Contributed",
+          "url": "https://codeload.github.com/openwch/arduino_core_ch32/zip/refs/tags/1.0.0",
+          "archiveFileName": "arduino_core_ch32-1.0.0.zip",
+          "checksum": "SHA-256:6FD92A6C0054979A460E6C14AC656FBACAC3BEFAB92F33D4B1B7C0A0E035FD86",
+          "size": "411583",
+          "boards": [
+            {"name": "ProgStick"}
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "LCE,toys",
+              "name": "riscv-none-embed-gcc",
+              "version": "8.2.0"
+            },
+            {
+              "packager": "LCE.toys",
+              "name": "openocd",
+              "version": "1.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
