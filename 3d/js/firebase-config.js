@@ -1,5 +1,7 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
+  /*
+
   apiKey: "AIzaSyBTnsiKIukKiQ2ztqGkszkMP6f1yG5y1xc",
   authDomain: "robotsticks-9519d.firebaseapp.com",
   databaseURL: "https://robotsticks-9519d-default-rtdb.firebaseio.com",
@@ -8,6 +10,14 @@ var firebaseConfig = {
   messagingSenderId: "296707504609",
   appId: "1:296707504609:web:a967839ad767bf1b2e3aa0",
   measurementId: "G-DRKMQ3VJKQ",
+*/
+  apiKey: "AIzaSyCt0IhN37bwI1Gp4xPBmhq8FY9bgrfrydM",
+  authDomain: "stickeducation-27116.firebaseapp.com",
+  databaseURL: "https://stickeducation-27116-default-rtdb.firebaseio.com",
+  projectId: "stickeducation-27116",
+  storageBucket: "stickeducation-27116.appspot.com",
+  messagingSenderId: "566576954504",
+  appId: "1:566576954504:web:fa4f51202373ba6c30733d"
 };
 
 // Initialize Firebase
