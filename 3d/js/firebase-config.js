@@ -149,16 +149,32 @@ function showProjectList(showList = false) {
 
       projectAlbum.querySelector(".container").querySelector(".row").innerHTML = ' '; 
       
-      projectList.forEach((projectId) => {
-      
+      var dbRef;
+      var projectName;
+
+      projectList.forEach(async (projectId) => {
+        
+        nameRef = firebase.database().ref(projectId + "/projectName");
+        projectName = "";
         console.log("project id", projectId);
+        
+        await nameRef.once('value', (snapshot) => {
+          if (snapshot.exists()) {
+            projectName = snapshot.val();            
+          } else {
+            projectName = projectId;
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        
         
         projectAlbum.querySelector(".container").querySelector(".row").innerHTML += 
         `<a href="3d?p=${projectId}" class="col-md-4">
           <div>
             <div class="card mb-4 box-shadow">
               <img class="card-img-top" alt="Thumbnail" src="./3d/thumbnail.png" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-              <p class="card-thumbnail-text">${projectId}</p>
+              <p class="card-thumbnail-text">${projectName}</p>
             </div>
           </div>
         </a>`;
