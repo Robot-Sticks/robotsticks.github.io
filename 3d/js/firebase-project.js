@@ -360,6 +360,7 @@ function animate() {
   controls.dampingFactor = 0.1;
   render(); // Render
 }
+
 transformControls.addEventListener("dragging-changed", function (event) {
   controls.enabled = true;
   console.log("dragging changed");
@@ -399,3 +400,35 @@ transformControls.addEventListener("dragging-changed", function (event) {
 });
 // Start animation
 animate();
+
+function saveProjectName() {
+
+  var projectName = document.getElementById('projectName').value;
+  
+  // Save to Firebase
+  dbRef.update({
+      projectName: projectName
+  }).then(() => {
+      alert('Project Name Saved');
+  }).catch((error) => {
+      console.error("Error saving project name: ", error);
+  });
+}
+
+function populateProjectName() {
+
+  dbRef.once('value', (snapshot) => {
+
+    const data = snapshot.val();
+
+    if (data && data.projectName) {
+
+      document.getElementById('projectName').value = data.projectName;
+    }
+  }, (error) => {
+    console.error("Error reading project name: ", error);
+  });
+}
+
+// Call this function when the page loads
+populateProjectName();
