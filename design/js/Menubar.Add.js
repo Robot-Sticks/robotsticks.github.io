@@ -54,6 +54,22 @@ function MenubarAdd( editor ) {
 
 	} );
 	options.add( option );
+	
+		// Stick
+
+		option = new UIRow();
+		option.setClass( 'option' );
+		option.setTextContent( strings.getKey( 'menubar/add/stick' ) );
+		option.onClick( function () {
+	
+			const geometry = new THREE.BoxGeometry( 1, 1, 1, 1, 1, 1 );
+			const mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+			mesh.name = 'Stick';
+	
+			editor.execute( new AddObjectCommand( editor, mesh ) );
+	
+		} );
+		options.add( option );
 
 	// Capsule
 
@@ -66,22 +82,6 @@ function MenubarAdd( editor ) {
 		const material = new THREE.MeshStandardMaterial();
 		const mesh = new THREE.Mesh( geometry, material );
 		mesh.name = 'Capsule';
-
-		editor.execute( new AddObjectCommand( editor, mesh ) );
-
-	} );
-	options.add( option );
-
-	// Circle
-
-	option = new UIRow();
-	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/add/circle' ) );
-	option.onClick( function () {
-
-		const geometry = new THREE.CircleGeometry( 1, 32, 0, Math.PI * 2 );
-		const mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Circle';
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
 
