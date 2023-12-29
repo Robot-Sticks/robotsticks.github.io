@@ -8,7 +8,7 @@ function Toolbar( editor ) {
 	const container = new UIPanel();
 	container.setId( 'toolbar' );
 
-	// translate / rotate / scale
+	// translate / rotate
 
 	const translateIcon = document.createElement( 'img' );
 	translateIcon.title = strings.getKey( 'toolbar/translate' );
@@ -37,19 +37,6 @@ function Toolbar( editor ) {
 	} );
 	container.add( rotate );
 
-	const scaleIcon = document.createElement( 'img' );
-	scaleIcon.title = strings.getKey( 'toolbar/scale' );
-	scaleIcon.src = 'images/scale.svg';
-
-	const scale = new UIButton();
-	scale.dom.appendChild( scaleIcon );
-	scale.onClick( function () {
-
-		signals.transformModeChanged.dispatch( 'scale' );
-
-	} );
-	container.add( scale );
-
 	const local = new UICheckbox( false );
 	local.dom.title = strings.getKey( 'toolbar/local' );
 	local.onChange( function () {
@@ -65,13 +52,11 @@ function Toolbar( editor ) {
 
 		translate.dom.classList.remove( 'selected' );
 		rotate.dom.classList.remove( 'selected' );
-		scale.dom.classList.remove( 'selected' );
 
 		switch ( mode ) {
 
 			case 'translate': translate.dom.classList.add( 'selected' ); break;
 			case 'rotate': rotate.dom.classList.add( 'selected' ); break;
-			case 'scale': scale.dom.classList.add( 'selected' ); break;
 
 		}
 
