@@ -11988,13 +11988,13 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
 
 	}
 
-	class BoxGeometry extends BufferGeometry {
+	class StickGeometry extends BufferGeometry {
 
 		constructor( width = 1, height = 1, depth = 1, widthSegments = 1, heightSegments = 1, depthSegments = 1 ) {
 
 			super();
 
-			this.type = 'BoxGeometry';
+			this.type = 'StickGeometry';
 
 			this.parameters = {
 				width: width,
@@ -12025,7 +12025,7 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
 			let numberOfVertices = 0;
 			let groupStart = 0;
 
-			// build each side of the box geometry
+			// build each side of the stick geometry
 
 			buildPlane( 'z', 'y', 'x', - 1, - 1, depth, height, width, depthSegments, heightSegments, 0 ); // px
 			buildPlane( 'z', 'y', 'x', 1, - 1, depth, height, - width, depthSegments, heightSegments, 1 ); // nx
@@ -12157,12 +12157,11 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
 
 		static fromJSON( data ) {
 
-			return new BoxGeometry( data.width, data.height, data.depth, data.widthSegments, data.heightSegments, data.depthSegments );
+			return new StickGeometry( data.width, data.height, data.depth, data.widthSegments, data.heightSegments, data.depthSegments );
 
 		}
 
 	}
-
 	/**
 	 * Uniform Utilities
 	 */
@@ -40490,6 +40489,7 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
 	var Geometries = /*#__PURE__*/Object.freeze({
 		__proto__: null,
 		BoxGeometry: BoxGeometry,
+		StickGeometry: StickGeometry,
 		CapsuleGeometry: CapsuleGeometry,
 		CircleGeometry: CircleGeometry,
 		ConeGeometry: ConeGeometry,
@@ -53085,6 +53085,7 @@ console.warn( 'Scripts "build/three.js" and "build/three.min.js" are deprecated 
 	exports.Box3 = Box3;
 	exports.Box3Helper = Box3Helper;
 	exports.BoxGeometry = BoxGeometry;
+	exports.StickGeometry = StickGeometry;
 	exports.BoxHelper = BoxHelper;
 	exports.BufferAttribute = BufferAttribute;
 	exports.BufferGeometry = BufferGeometry;
