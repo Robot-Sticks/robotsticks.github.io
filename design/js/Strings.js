@@ -34,6 +34,7 @@ function Strings( config ) {
 			'menubar/add': 'Add',
 			'menubar/add/group': 'Group',
 			'menubar/add/plane': 'Plane',
+			'menubar/add/stick': 'Stick',
 			'menubar/add/box': 'Box',
 			'menubar/add/capsule': 'Capsule',
 			'menubar/add/circle': 'Circle',
