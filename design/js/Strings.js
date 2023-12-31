@@ -80,6 +80,10 @@ function Strings( config ) {
 			'menubar/help/about': 'About',
 			'menubar/help/manual': 'Manual',
 
+			'menubar/login': 'Login',
+			'menubar/login/welcome': 'Welcome',
+			'menubar/login/logout': 'Logout',
+
 			'sidebar/animations': 'Animations',
 			'sidebar/animations/play': 'Play',
 			'sidebar/animations/stop': 'Stop',
@@ -431,6 +435,11 @@ function Strings( config ) {
 			'menubar/help/about': 'A propos',
 			'menubar/help/manual': 'Manual',
 
+			// Login in French
+			'menubar/login': 'Connexion',
+			'menubar/login/welcome': 'Bienvenue',
+			'menubar/login/logout': 'Déconnexion',
+
 			'sidebar/animations': 'Animations',
 			'sidebar/animations/play': 'Play',
 			'sidebar/animations/stop': 'Stop',
@@ -779,6 +788,11 @@ function Strings( config ) {
 			'menubar/help/icons': '图标组件包',
 			'menubar/help/about': '关于',
 			'menubar/help/manual': '手册',
+
+			// Login in Zh
+			'menubar/login': '登录',
+			'menubar/login/welcome': '欢迎',
+			'menubar/login/logout': '登出',
 
 			'sidebar/animations': '动画',
 			'sidebar/animations/play': '播放',
